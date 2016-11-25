@@ -282,6 +282,19 @@ bool StringToInt(const std::string &value,
                  uint16_t *output,
                  bool strict = false);
 
+  /**
+  * @brief Convert a string to a long long int.
+  * @param[in] value the string to convert
+  * @param[out] output a pointer where the value will be stored.
+  * @param[in] strict this controls if trailing characters produce an error.
+  * @returns true if the value was converted, false if the string was not an int
+  * or the value was too large / small for the type.
+  * @sa StringToInt.
+*/
+bool StringToInt(const std::string &value,
+                                  long long int *output,
+                                  bool strict = false);
+
 /**
  * @brief Convert a string to a uint8_t.
  * @param[in] value the string to convert
