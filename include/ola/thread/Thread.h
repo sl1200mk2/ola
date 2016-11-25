@@ -37,7 +37,7 @@
 inline std::ostream& operator<<(std::ostream &stream,
                                  void* handle) {
 #ifdef WINPTHREAD_API
-  stream << handle
+  stream << handle;
 #else
 const ptw32_handle_t thisP = handle;
   stream << thisP->p;
