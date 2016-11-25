@@ -35,8 +35,13 @@
 
 #if defined(_WIN32) && defined(__GNUC__)
 inline std::ostream& operator<<(std::ostream &stream,
-                                 const ptw32_handle_t &handle) {
-  stream << handle.p;
+                                 void* handle) {
+#ifdef WINPTHREAD_API
+  stream << handle
+#else
+const ptw32_handle_t thisP = handle;
+  stream << thisP->p;
+#endif
   return stream;
 }
 #endif  // defined(_WIN32) && defined(__GNUC__)
