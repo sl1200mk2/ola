@@ -24,6 +24,13 @@
 
 #ifdef _WIN32
 #include <windows.h>
+
+#ifndef _SIGSET_T_
+#define _SIGSET_T_
+  typedef int _sigset_t;
+  typedef _sigset_t sigset_t;
+#endif
+
 // Some preprocessor magic to reduce Windows.h namespace pollution
 #  ifdef AddPort
 #    undef AddPort
