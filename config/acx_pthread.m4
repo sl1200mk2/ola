@@ -130,7 +130,7 @@ fi
 # which indicates that we try without any flags at all, and "pthread-config"
 # which is a program returning the flags for the Pth emulation library.
 
-acx_pthread_flags="winpthreads pthreads none -Kthread -kthread lthread -pthread -pthreads -mthreads pthread --thread-safe -mt pthread-config"
+acx_pthread_flags="winpthread pthreads none -Kthread -kthread lthread -pthread -pthreads -mthreads pthread --thread-safe -mt pthread-config"
 
 # The ordering *is* (sometimes) important.  Some notes on the
 # individual items follow:
