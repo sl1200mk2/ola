@@ -186,6 +186,18 @@ bool StringToInt(const string &value, uint16_t *output, bool strict) {
   return true;
 }
 
+ bool StringToInt(const string &value, long long int *output, bool strict) {
+  unsigned int v;
+  if (!StringToInt(value, &v, strict)) {
+    return false;
+  }
+  if (v > LLONG_MAX) {
+    return false;
+  }
+  *output = static_cast<long long int>(v);
+  return true;
+}
+
 bool StringToInt(const string &value, uint8_t *output, bool strict) {
   unsigned int v;
   if (!StringToInt(value, &v, strict)) {
