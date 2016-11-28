@@ -41,6 +41,10 @@
 #include <iostream>
 #include <string>
 
+#ifdef _WIN32
+#include <Rpc.h>
+#endif
+
 #include "ola/io/OutputBuffer.h"
 
 namespace ola {
