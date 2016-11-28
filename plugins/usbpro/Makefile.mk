@@ -3,6 +3,8 @@ include plugins/usbpro/messages/Makefile.mk
 # LIBRARIES
 ##################################################
 # This is a library which isn't coupled to olad
+if USE_USBPRO
+# The OLA USB Pro Plugin
 noinst_LTLIBRARIES += plugins/usbpro/libolausbprowidget.la
 plugins_usbpro_libolausbprowidget_la_SOURCES = \
     plugins/usbpro/ArduinoWidget.cpp \
@@ -35,8 +37,6 @@ plugins_usbpro_libolausbprowidget_la_SOURCES = \
     plugins/usbpro/WidgetDetectorThread.h
 plugins_usbpro_libolausbprowidget_la_LIBADD = common/libolacommon.la
 
-if USE_USBPRO
-# The OLA USB Pro Plugin
 lib_LTLIBRARIES += plugins/usbpro/libolausbpro.la
 plugins_usbpro_libolausbpro_la_SOURCES = \
     plugins/usbpro/ArduinoRGBDevice.cpp \
