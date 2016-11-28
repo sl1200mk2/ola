@@ -825,6 +825,19 @@ if test -z "${USING_WIN32_TRUE}"; then
 fi
 AC_SUBST(OLA_CLIENT_LIBS)
 
+AC_MSG_CHECKING([if libtool needs -no-undefined flag to build shared libraries])
+case "`uname`" in
+  CYGWIN*|MSYS*|MINGW*|AIX*)
+    ## Add in the -no-undefined flag to LDFLAGS for libtool.
+    AC_MSG_RESULT([yes])
+    LDFLAGS="$LDFLAGS -no-undefined"
+    ;;
+  *)
+    ## Don't add in anything.
+    AC_MSG_RESULT([no])
+    ;;
+esac
+
 # Extra tools
 #####################################################
 AS_IF([test "x$enable_ja_rule" = xyes && test "x$enable_usbdmx" = xno],
