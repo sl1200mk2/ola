@@ -169,6 +169,18 @@ AC_CHECK_FUNCS([bzero gettimeofday memmove memset mkdir strdup strrchr \
                 getgrnam_r getgrgid_r secure_getenv])
 
 LT_INIT([win32-dll])
+AC_MSG_CHECKING([if libtool needs -no-undefined flag to build shared libraries])
+case "`uname`" in
+  CYGWIN*|MSYS*|MINGW*|AIX*)
+    ## Add in the -no-undefined flag to LDFLAGS for libtool.
+    AC_MSG_RESULT([yes])
+    LDFLAGS="$LDFLAGS -no-undefined"
+    ;;
+  *)
+    ## Don't add in anything.
+    AC_MSG_RESULT([no])
+    ;;
+esac
 
 # Decide if we're building on Windows early on.
 AM_CONDITIONAL([USING_WIN32], [test "x$host_os" = xmingw32])
@@ -825,18 +837,7 @@ if test -z "${USING_WIN32_TRUE}"; then
 fi
 AC_SUBST(OLA_CLIENT_LIBS)
 
-AC_MSG_CHECKING([if libtool needs -no-undefined flag to build shared libraries])
-case "`uname`" in
-  CYGWIN*|MSYS*|MINGW*|AIX*)
-    ## Add in the -no-undefined flag to LDFLAGS for libtool.
-    AC_MSG_RESULT([yes])
-    LDFLAGS="$LDFLAGS -no-undefined"
-    ;;
-  *)
-    ## Don't add in anything.
-    AC_MSG_RESULT([no])
-    ;;
-esac
+
 
 # Extra tools
 #####################################################
